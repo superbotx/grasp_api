@@ -6,6 +6,8 @@ developed for the project, and you will use them in the main program.
 """
 def main():
     print('starting app ...')
+    grasp_api = botXexport['grasp_api']['module']()
+    grasp_api.setup()
 
 """
 This is the only script that should be running from terminal so that the

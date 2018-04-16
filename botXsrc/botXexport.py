@@ -31,4 +31,16 @@ documentation generation.
 
 Modify the following variable to your needs
 """
-botXexport = {}
+from .grasp_api import GraspAPI
+
+botXexport = {
+    'grasp_api': {
+        'module': GraspAPI,
+        'type': 'api',
+        'inputs': [],
+        'outputs': [],
+        'requirements': [],
+        'description': 'api to receive a grasp pose'
+    }
+}
+
