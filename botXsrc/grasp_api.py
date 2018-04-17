@@ -12,8 +12,11 @@ from sensor_msgs.msg import Image, PointCloud2, CameraInfo
 import matplotlib.pyplot as plt
 import matplotlib.pyplot as pyplot
 
-# from gqcnn.srv import GQCNNGraspPlanner
-# from gqcnn.msg import GQCNNGrasp, BoundingBox
+import sys
+sys.path.append('external_modules')
+
+from haptica_util.srv import GQCNNGraspPlanner
+from haptica_util.msg import GQCNNGrasp, BoundingBox
 
 
 # import sys
@@ -51,6 +54,8 @@ class GraspAPI(BaseComponent):
 
     def cache_info(self, msg):
         # print("Message: ", msg)
+        if (len(self.buf) > 2000):
+            self.buf.pop(0)
         self.buf.append([msg, type(msg)])
         return
 
@@ -68,8 +73,9 @@ class GraspAPI(BaseComponent):
             im = self.get_image()[0]
             print(im.encoding)
             if im.encoding == 'rgb8':
-                break
-        return im
+                return im
+                # break
+        
 
     def get_depth_image(self):
         im = Image()
@@ -77,8 +83,9 @@ class GraspAPI(BaseComponent):
             im = self.get_image()[0]
             print(im.encoding)
             if im.encoding == '32FC1':
-                break
-        return im
+                return im
+                # break
+        
 
 
     def _get_bounding_box(self, object_name, color_image):
@@ -128,9 +135,15 @@ class GraspAPI(BaseComponent):
         boundingBox = self._bbox_to_msg(bounding_box)
         camera_info = self.get_camera_info()
 
+        # rename
+        color_im = color_image
+        print ("Color Image enc: ", color_im.encoding)
+        depth_im = depth_image
+        print ("Depth Image enc: ", depth_im.encoding)
+
         try:
             rospy.loginfo("Sending grasp plan request to gqcnn server")
-            planned_grasp_data = self.plan_grasp(color_image, depth_image, camera_info, boundingBox)
+            planned_grasp_data = self.plan_grasp(color_im, depth_im, camera_info, boundingBox)
 
             planned_grasp_pose_msg = planned_grasp_data.grasp.pose
             grasp_succes_prob = planned_grasp_data.grasp.grasp_success_prob

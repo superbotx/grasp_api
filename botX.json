@@ -1,16 +1,20 @@
 {
-    "botX_modules": {},
     "version": "0.0.1",
-    "source_scripts": [],
+    "name": "grasp_api",
+    "botX_modules": {},
     "external_modules": {
+        "haptica_util": {
+            "name": "haptica_util",
+            "url": "https://github.com/superbotx/haptica_util.git"
+        },
         "gqcnn": {
-            "url": "https://github.com/superbotx/gqcnn.git",
-            "name": "gqcnn"
+            "name": "gqcnn",
+            "url": "https://github.com/superbotx/gqcnn.git"
         },
         "perception": {
-            "url": "https://github.com/superbotx/perception.git",
-            "name": "perception"
+            "name": "perception",
+            "url": "https://github.com/superbotx/perception.git"
         }
     },
-    "name": "grasp_api"
+    "source_scripts": []
 }
