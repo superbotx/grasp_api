@@ -1,16 +1,16 @@
 {
     "botX_modules": {},
     "version": "0.0.1",
-    "name": "grasp_api",
+    "source_scripts": [],
     "external_modules": {
-        "perception": {
-            "url": "https://github.com/superbotx/perception.git",
-            "name": "perception"
-        },
         "gqcnn": {
             "url": "https://github.com/superbotx/gqcnn.git",
             "name": "gqcnn"
+        },
+        "perception": {
+            "url": "https://github.com/superbotx/perception.git",
+            "name": "perception"
         }
     },
-    "source_scripts": []
+    "name": "grasp_api"
 }

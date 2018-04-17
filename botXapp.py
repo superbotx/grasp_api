@@ -1,4 +1,5 @@
 from botXsrc.botXexport import botXexport
+import time
 
 """
 botXexport is a dictionary containing all the reusable components you
@@ -8,6 +9,8 @@ def main():
     print('starting app ...')
     grasp_api = botXexport['grasp_api']['module']()
     grasp_api.setup()
+    time.sleep(5)
+    grasp_api.object_to_grasp('cup')
 
 """
 This is the only script that should be running from terminal so that the
