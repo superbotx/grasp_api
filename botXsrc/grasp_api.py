@@ -119,7 +119,9 @@ class GraspAPI(BaseComponent):
         boundingBox.maxY = bbox[3]
         return boundingBox
 
-    def object_to_grasp(self, object_name):
+    def object_to_grasp(self, object_name='cup', bounding_box=None):
+
+        print("Finding grasp for ", object_name)
 
         color_image = self.get_color_image()
         depth_image = self.get_depth_image()
