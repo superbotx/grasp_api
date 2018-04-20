@@ -37,7 +37,7 @@ class GraspAPI(BaseComponent):
         
 
         command = 'roslaunch gqcnn gqcnn.launch'
-        # self.proc_id = external_command_pool.start_command(command)
+        self.proc_id = external_command_pool.start_command(command)
 
         self.buf = []
         rospy.init_node('grasp_listener')
