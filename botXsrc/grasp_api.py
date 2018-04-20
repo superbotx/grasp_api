@@ -40,7 +40,10 @@ class GraspAPI(BaseComponent):
         self.proc_id = external_command_pool.start_command(command)
 
         self.buf = []
-        rospy.init_node('grasp_listener')
+        try:
+            rospy.init_node('grasp_listener')
+        except:
+            pass
         rospy.Subscriber("clock", Clock, self.cache_info)
         rospy.Subscriber("/camera/image_raw", Image, self.cache_info)
         rospy.Subscriber("/camera/depth/image_raw", Image, self.cache_info)
@@ -121,7 +124,7 @@ class GraspAPI(BaseComponent):
 
     def object_to_grasp(self, object_name='cup', bounding_box=None):
 
-        print("Finding grasp for ", object_name)
+        print("Finding grasp foro ", object_name)
 
         color_image = self.get_color_image()
         depth_image = self.get_depth_image()
