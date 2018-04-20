@@ -130,6 +130,7 @@ class GraspAPI(BaseComponent):
         grasp_pose = self.get_grasp_plan(bounding_box, color_image, depth_image)
         print("Grasp plan completed.")
         print("Grasp pose: ", grasp_pose)
+        return grasp_pose
      
     def get_grasp_plan(self, bounding_box, color_image, depth_image):
         boundingBox = self._bbox_to_msg(bounding_box)
